@@ -8,17 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var authManager = AuthManager.shared
+    @StateObject var authViewModel = AuthViewModel(authManager: AuthManager.shared)
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            if(authManager.user != nil){
+                OnBoardingView()
+            }else{
+                if(authViewModel.showRegister){
+                    RegisterView()
+                }else{
+                    LogInView()
+                }
+            }
         }
-        .padding()
+        .environmentObject(authViewModel)
+            
     }
 }
 
 #Preview {
     ContentView()
+        
 }
