@@ -63,6 +63,7 @@ struct RegisterView: View {
                                 withAnimation(Animation.spring(response: 0.2, dampingFraction: 0.2, blendDuration: 0.2)) {
                                     shakePasswordField = false
                                 }
+                            
                         }
                     }
                 HStack{
