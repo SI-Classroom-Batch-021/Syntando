@@ -14,15 +14,16 @@ struct CustomerQuestionView: View {
     var body: some View {
         VStack{
             
-            HStack{
-                AlexTextField(text: $firstName, desc: "Firstname")
-                    .padding(.horizontal,16)
-                AlexTextField(text: $lastName, desc: "Lastname")
-                    .padding(.horizontal,16)
-
+            VStack(spacing: 16){
+                
+                AlexTextField(text: $firstName, placeholder: "Firstname", isNumberField: false)
+               
+                AlexTextField(text: $lastName, placeholder: "Lastname", isNumberField: false)
+                  
+                AlexTextField(text: $mobileNumber, placeholder: "Number", isNumberField: true)
+                    
             }
-            AlexTextField(text: $mobileNumber, desc: "Number")
-                .padding(16)
+            .padding(16)
         }
     }
 }
