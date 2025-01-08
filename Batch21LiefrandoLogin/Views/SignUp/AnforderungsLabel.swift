@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AnforderungsLabel: View {
-    var text: String
+    var text: LocalizedStringKey
     var isCompliant: Bool
     var body: some View {
         

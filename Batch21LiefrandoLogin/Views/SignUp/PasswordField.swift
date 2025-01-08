@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PasswordField: View {
-    var desc: String
+    var desc: LocalizedStringKey
     @Binding var password: String
     @State var isSecured : Bool = true
     

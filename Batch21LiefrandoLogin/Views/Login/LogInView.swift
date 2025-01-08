@@ -23,7 +23,7 @@ struct LogInView: View {
                     .foregroundStyle(.white)
                     .padding(.bottom,40)
                 //Email
-                TextField("Email",text: $viewModel.email)
+                TextField("textfield.email",text: $viewModel.email)
                     .padding()
                     .background(Color.gray.opacity(0.8))
                     .cornerRadius(8)
@@ -33,19 +33,19 @@ struct LogInView: View {
                     .disableAutocorrection(true)
                 
                 //Password
-                PasswordField(desc: "Choose Password", password: $viewModel.password)
+                PasswordField(desc: "textfield.password", password: $viewModel.password)
                     .padding(.horizontal,16)
                     .offset(x: shakePasswordField ? -10 : 0)
                   
                 // Error Message
                 if(viewModel.errorMessage != ""){
-                    Text("Fehler beim Einloggen")
+                    Text("label.error_login")
                         .font(.subheadline)
                         .foregroundStyle(.white)
                 }
                 //signUp Button
                 
-                SyntandoButton(text: "Login", active: viewModel.readyToLogin, action: {
+                SyntandoButton(text: "button.login", active: viewModel.readyToLogin, action: {
                     Task{
                         await viewModel.loginUser()
                     }
@@ -57,13 +57,13 @@ struct LogInView: View {
                 
                 //Link to Log in
                 HStack{
-                    Text("New to us ? Create an Account? ")
+                    Text("label.new_account")
                         .foregroundStyle(.gray)
                     Button(action: {
                         print("swap to Login Pressed")
                         viewModel.showRegister = true
                     }){
-                        Text("Register")
+                        Text("button.register")
                             .foregroundStyle(.white)
                     }
                 }

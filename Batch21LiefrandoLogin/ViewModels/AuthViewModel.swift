@@ -20,7 +20,7 @@ class AuthViewModel : ObservableObject {
     @Published var emailCompliant : Bool = false
     @Published var capsCompliant : Bool = false
     @Published var numberCompliant : Bool = false
-    @Published var lengthCompliant : Bool = false
+    @Published var missingPasswordCharacters : Int = 8
     @Published var specialCharCompliant : Bool = false
     
     private var authManager : AuthManager
@@ -30,7 +30,7 @@ class AuthViewModel : ObservableObject {
     }
     
     var passwordIsCompliant : Bool {
-        capsCompliant && numberCompliant && lengthCompliant && specialCharCompliant
+        capsCompliant && numberCompliant && missingPasswordCharacters == 0 && specialCharCompliant
     }
     var passwordsAreEqual : Bool {
         password == confirmPassword && password != ""
@@ -46,13 +46,10 @@ class AuthViewModel : ObservableObject {
     func checkPasswordForCompliance() {
         capsCompliant = false
         numberCompliant = false
-        lengthCompliant = false
         specialCharCompliant = false
-      
-        if(password.count<4) { return }
         
-        if(password.count >= 8) {lengthCompliant = true}
-        
+        missingPasswordCharacters = max(8 - password.count, 0)
+
         for char in password{
             if char.isUppercase { capsCompliant = true }
             if char.isNumber { numberCompliant = true }

@@ -8,22 +8,26 @@
 import SwiftUI
 
 struct PasswordValidationView: View {
-    var lengthCompliant : Bool
+    var missingCharacters : Int
     var capsCompliant : Bool
     var specialCharCompliant : Bool
     var numberCompliant : Bool
-    
+
+    private var lengthCompliant: Bool {
+        missingCharacters == 0
+    }
+
     var body: some View {
         HStack{
             VStack(alignment: .leading){
                 
-                AnforderungsLabel(text: "> 8 Zeichen", isCompliant: lengthCompliant)
-                AnforderungsLabel(text: "Großbuchstabe", isCompliant: capsCompliant)
+                AnforderungsLabel(text: "label.password_min_8_characters_\(missingCharacters)", isCompliant: lengthCompliant)
+                AnforderungsLabel(text: "label.password_capital_letter", isCompliant: capsCompliant)
             }
             Spacer()
             VStack(alignment: .leading){
-                AnforderungsLabel(text: "Sonderzeichen (!?&$%*-)", isCompliant: specialCharCompliant)
-                AnforderungsLabel(text: "Zahlen", isCompliant: numberCompliant)
+                AnforderungsLabel(text: "label.password_special_character", isCompliant: specialCharCompliant)
+                AnforderungsLabel(text: "label.password_number", isCompliant: numberCompliant)
             }
             
         }
@@ -31,5 +35,5 @@ struct PasswordValidationView: View {
 }
 
 #Preview {
-    PasswordValidationView(lengthCompliant: true, capsCompliant: false, specialCharCompliant: true, numberCompliant: false)
+    PasswordValidationView(missingCharacters: 0, capsCompliant: false, specialCharCompliant: true, numberCompliant: false)
 }

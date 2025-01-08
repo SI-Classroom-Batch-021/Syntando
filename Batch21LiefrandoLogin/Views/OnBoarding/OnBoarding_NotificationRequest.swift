@@ -20,19 +20,19 @@ struct OnBoarding_NotificationRequest: View {
                     .foregroundStyle(.white)
                     .padding(.bottom,40)
                 
-                Text("Um dir mitteilen zu können wenn dein Essen unterwegs ist würden wir dir gerne Benachrichtigungen senden")
+                Text("label.notification_request")
                     .fontWeight(.light)
                     .multilineTextAlignment(.center)
                 
-                SyntandoButton(text: "Mitteilungen aktivieren", active: true) {
+                SyntandoButton(text: "button.activate_notifications", active: true) {
                     Task{
                         await NotificationManager.shared.askForNotificationPermission()
                     }
                 }
                 .padding(.horizontal,16)
                 .padding(.top,40)
-                SyntandoButton(text: "Test Notification", active: true) {
-                    
+                SyntandoButton(text: "button.test_notifications", active: true) {
+
                     let notificationContent = NotificationManager.shared.createNotificationContent(
                         title: "Das ist eine Test Notification",
                         body: "Super das du dich für unsere Nachrichten interessiert.",
