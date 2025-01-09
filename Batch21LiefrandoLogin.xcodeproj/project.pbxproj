@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D7470EE42D10279E009C1160 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7470EE32D10279E009C1160 /* GoogleService-Info.plist */; };
-		D7470EE52D10279E009C1160 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7470EE32D10279E009C1160 /* GoogleService-Info.plist */; };
 		D7470F402D107289009C1160 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D7470F3F2D107289009C1160 /* FirebaseAnalytics */; };
 		D7470F422D107289009C1160 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = D7470F412D107289009C1160 /* FirebaseAnalyticsOnDeviceConversion */; };
 		D7470F442D107289009C1160 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = D7470F432D107289009C1160 /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -56,12 +54,24 @@
 		D7470E202D0C1F22009C1160 /* Batch21LiefrandoLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Batch21LiefrandoLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7470E3A2D0C1F25009C1160 /* Batch21LiefrandoLoginUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Batch21LiefrandoLoginUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7470EDA2D101F99009C1160 /* LiefrandoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiefrandoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D7470EE32D10279E009C1160 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D72108452D157460005F89C0 /* Exceptions for "Batch21LiefrandoLogin" folder in "LiefrandoTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"GoogleService-Info.plist",
+			);
+			target = D7470ED92D101F99009C1160 /* LiefrandoTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		D7470E222D0C1F22009C1160 /* Batch21LiefrandoLogin */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				D72108452D157460005F89C0 /* Exceptions for "Batch21LiefrandoLogin" folder in "LiefrandoTests" target */,
+			);
 			path = Batch21LiefrandoLogin;
 			sourceTree = "<group>";
 		};
@@ -127,7 +137,6 @@
 				D7470E222D0C1F22009C1160 /* Batch21LiefrandoLogin */,
 				D7470EDB2D101F99009C1160 /* LiefrandoTests */,
 				D7470E212D0C1F22009C1160 /* Products */,
-				D7470EE32D10279E009C1160 /* GoogleService-Info.plist */,
 				D7470EE72D1029C3009C1160 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -294,7 +303,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7470EE42D10279E009C1160 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,7 +317,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7470EE52D10279E009C1160 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

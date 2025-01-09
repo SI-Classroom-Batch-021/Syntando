@@ -10,7 +10,7 @@ import SwiftUI
 struct AlexTextField: View {
     @Binding var text : String
     let placeholder: String
-    let isNumberField : Bool
+    let keyboardType : UIKeyboardType 
     
     @State private var width = CGFloat.zero
     @State private var labelWidth = CGFloat.zero
@@ -19,7 +19,7 @@ struct AlexTextField: View {
         
             
             TextField(placeholder, text: $text)
-                .keyboardType( isNumberField ? .numberPad : .default)
+            .keyboardType( keyboardType)
                 .foregroundColor(.black)
                 .font(.system(size: 20))
                 .padding(EdgeInsets(top: 15, leading: 10, bottom: 15, trailing: 10))
@@ -58,6 +58,6 @@ struct AlexTextField: View {
 #Preview {
     ZStack{
         Color.orange
-        AlexTextField(text: .constant("Alexander"), placeholder: "Vorname", isNumberField: false)
+        AlexTextField(text: .constant("Alexander"), placeholder: "Vorname", keyboardType: .default)
     }
 }
