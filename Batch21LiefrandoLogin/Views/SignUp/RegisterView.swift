@@ -23,7 +23,7 @@ struct RegisterView: View {
                     .foregroundStyle(.white)
                     .padding(.bottom,40)
                 //Email
-                TextField("Email",text: $viewModel.email)
+                TextField("textfield.email",text: $viewModel.email)
                     .padding()
                     .background(Color.gray.opacity(0.8))
                     .cornerRadius(8)
@@ -32,19 +32,19 @@ struct RegisterView: View {
                     .keyboardType(.emailAddress)
                     .disableAutocorrection(true)
                 HStack(){
-                    AnforderungsLabel(text: "Valid Email", isCompliant: viewModel.emailCompliant)
+                    AnforderungsLabel(text: "label.valid_email", isCompliant: viewModel.emailCompliant)
                         .padding(.horizontal,18)
                     Spacer()
                 }
                 //Password
-                PasswordField(desc: "Choose Password", password: $viewModel.password)
+                PasswordField(desc: "textfield.password", password: $viewModel.password)
                     .padding(.horizontal,16)
                     .offset(x: shakePasswordField ? -10 : 0)
                   
 
                 //Password CheckList
                 PasswordValidationView(
-                    lengthCompliant: viewModel.lengthCompliant,
+                    missingCharacters: viewModel.missingPasswordCharacters,
                     capsCompliant: viewModel.capsCompliant,
                     specialCharCompliant: viewModel.specialCharCompliant,
                     numberCompliant: viewModel.numberCompliant
@@ -52,7 +52,7 @@ struct RegisterView: View {
                 .padding(.horizontal,18)
                 //Password check
                 PasswordField(
-                    desc: "Repeat Password",
+                    desc: "textfield.repeat_password",
                     password: $viewModel.confirmPassword
                 )
                     .padding(.horizontal,16)
@@ -68,7 +68,7 @@ struct RegisterView: View {
                     }
                 HStack{
                     AnforderungsLabel(
-                        text: "Valid Password",
+                        text: "label.valid_password",
                         isCompliant: viewModel.passwordsAreEqual
                     )
                         .padding(.horizontal,18)
@@ -78,7 +78,7 @@ struct RegisterView: View {
                 //signUp Button
                 
                 
-                SyntandoButton(text: "Sign Up", active: viewModel.readyToLogin, action: {
+                SyntandoButton(text: "button.sign_up", active: viewModel.readyToLogin, action: {
                     Task{
                         await viewModel.registerUser()
                     }
@@ -91,12 +91,12 @@ struct RegisterView: View {
                 
                 //Link to Log in
                 HStack{
-                    Text("Already have an Account? ")
+                    Text("label.already_has_account")
                         .foregroundStyle(.gray)
                     Button(action: {
                         viewModel.showRegister = false                        
                     }){
-                        Text("Log in")
+                        Text("button.login")
                             .foregroundStyle(.white)
                     }
                 }
@@ -116,4 +116,6 @@ struct RegisterView: View {
 #Preview {
     RegisterView()
         .environmentObject(AuthViewModel(authManager: AuthManager.shared))
+        .environment(\.locale, Locale(identifier: "en"))
 }
+

@@ -12,9 +12,9 @@ struct OnBoarding_WelcomeToSyntando: View {
         ZStack{
             Color.orange.ignoresSafeArea(.all)
             VStack{
-                Text("Syntando")
+                Text("label.syntando")
                     .font(.largeTitle)
-                Text("Hier bist du geliefert!")
+                Text("label.delivery_slogan")
                     .font(.caption)
                 Image(systemName: "truck.box")
                     .resizable()

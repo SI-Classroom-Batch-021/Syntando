@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SyntandoButton: View {
-    var text: String
+    var text: LocalizedStringKey
     var active: Bool
     var action : () -> Void
     var body: some View {
