@@ -13,9 +13,9 @@ struct OnBoardingView: View {
             Color.orange.ignoresSafeArea(.all)
             TabView{
                 OnBoarding_WelcomeToSyntando()
-                OnBoarding_Questions()
+                Text("label.give_data")
                 OnBoarding_NotificationRequest()
-                Button("LogOut"){
+                Button("button.logout"){
                     AuthManager.shared.logOut()
                 }
             }

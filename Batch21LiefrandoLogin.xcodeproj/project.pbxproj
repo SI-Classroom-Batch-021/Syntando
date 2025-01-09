@@ -60,7 +60,7 @@
 		D72108452D157460005F89C0 /* Exceptions for "Batch21LiefrandoLogin" folder in "LiefrandoTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				"Views/OnBoarding/GoogleService-Info.plist",
+				"GoogleService-Info.plist",
 			);
 			target = D7470ED92D101F99009C1160 /* LiefrandoTests */;
 		};
