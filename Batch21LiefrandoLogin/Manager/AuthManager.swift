@@ -8,7 +8,8 @@
 import Foundation
 import Firebase
 import FirebaseAuth
-
+import GoogleSignIn
+import GoogleSignInSwift
 @MainActor
 class AuthManager: ObservableObject{
     
@@ -52,6 +53,43 @@ class AuthManager: ObservableObject{
         }catch{
             errorMessage = error.localizedDescription
         }
+    }
+    
+    func signInWithGoogle() async -> Bool{
+        guard let clientID = FirebaseApp.app()?.options.clientID else {
+            fatalError("No Client ID found in Firebase Config")
+        }
+        
+        let config = GIDConfiguration(clientID: clientID)
+        GIDSignIn.sharedInstance.configuration = config
+        
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let window = windowScene.windows.first, let rootViewController = window.rootViewController else {
+            
+            print("there is no root view controller")
+            return false
+        }
+            
+        do{
+            let userAuthentication = try await GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController)
+            let user = userAuthentication.user
+            guard let idToken = user.idToken else {
+                print("ID token missing")
+                return false
+            }
+            let accessToken = user.accessToken
+            
+            let credentials = GoogleAuthProvider.credential(withIDToken: idToken.tokenString, accessToken: accessToken.tokenString)
+            
+            let result = try await fireBaseAuthManager.signIn(with: credentials)
+            self.user = result.user
+            return true
+        }
+        catch{
+            print(error.localizedDescription)
+            return false
+        }
+        
     }
     
     

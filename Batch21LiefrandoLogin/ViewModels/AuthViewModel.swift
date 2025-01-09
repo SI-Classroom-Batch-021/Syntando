@@ -70,4 +70,8 @@ class AuthViewModel : ObservableObject {
     func loginUser() async{
          await authManager.login(email: email, password: password)
     }
+    func signinWithGoogle() async{
+        await authManager.signInWithGoogle()
+    }
+    
 }
