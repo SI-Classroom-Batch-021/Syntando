@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import GoogleSignIn
+import GoogleSignInSwift
 
 struct LogInView: View {
     @EnvironmentObject var viewModel : AuthViewModel
@@ -53,6 +55,45 @@ struct LogInView: View {
                 .padding(.horizontal,16)
                 .padding(.top,40)
                 .disabled(!viewModel.readyToLogin)
+                
+                HStack{
+                    Rectangle()
+                        .fill(Color.gray)
+                        .frame(height: 1)
+                        .frame(maxWidth: .infinity)
+                        .offset(y: 2)
+                        .padding(.leading,8)
+                    Text("label.or")
+                    Rectangle()
+                        .fill(Color.gray)
+                        .frame(height: 1)
+                        .frame(maxWidth: .infinity)
+                        .offset(y: 2)
+                        .padding(.trailing,8)
+                }
+                
+                Button(action : {
+                    Task{
+                        await viewModel.signinWithGoogle()
+                    }
+                }){
+                    ZStack{
+                        Text("button.signin_with_google")
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.white)
+                            .foregroundStyle(Color.black)
+                            .cornerRadius(8)
+                        HStack{
+                            Image("Google")
+                                .padding()
+                            Spacer()
+                            
+                        }
+                    }
+                    .padding()
+                    
+                }
                 Spacer()
                 
                 //Link to Log in
@@ -68,6 +109,7 @@ struct LogInView: View {
                     }
                 }
                 .padding()
+                
             }
         }
         .onChange(of: viewModel.password) { _,_ in

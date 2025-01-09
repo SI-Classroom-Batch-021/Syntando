@@ -81,6 +81,22 @@
         }
       }
     },
+    "button.signin_with_google" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einloggen mit Google"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign in with Google"
+          }
+        }
+      }
+    },
     "button.test_notifications" : {
       "localizations" : {
         "de" : {
@@ -189,6 +205,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "We would like to send you notifications."
+          }
+        }
+      }
+    },
+    "label.or" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "oder"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "or"
           }
         }
       }
