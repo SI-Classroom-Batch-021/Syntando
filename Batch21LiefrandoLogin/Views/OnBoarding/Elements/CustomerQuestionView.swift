@@ -11,16 +11,20 @@ struct CustomerQuestionView: View {
     @State var firstName: String = ""
     @State var lastName: String = ""
     @State var mobileNumber : String = ""
+    @State var email: String = ""
     var body: some View {
         VStack{
             
             VStack(spacing: 16){
                 
-                AlexTextField(text: $firstName, placeholder: "Firstname", isNumberField: false)
+                AlexTextField(text: $firstName, placeholder: "Firstname",keyboardType: .default)
                
-                AlexTextField(text: $lastName, placeholder: "Lastname", isNumberField: false)
+                AlexTextField(text: $lastName, placeholder: "Lastname",keyboardType: .default)
                   
-                AlexTextField(text: $mobileNumber, placeholder: "Number", isNumberField: true)
+                AlexTextField(text: $mobileNumber, placeholder: "Number", keyboardType: .numberPad)
+                
+                AlexTextField(text: $email, placeholder: "Email", keyboardType: .emailAddress)
+                
                     
             }
             .padding(16)

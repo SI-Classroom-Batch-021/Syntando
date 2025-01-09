@@ -13,7 +13,7 @@ struct OnBoardingView: View {
             Color.orange.ignoresSafeArea(.all)
             TabView{
                 OnBoarding_WelcomeToSyntando()
-                Text("Gib mir deine Daten View")
+                OnBoarding_Questions()
                 OnBoarding_NotificationRequest()
                 Button("LogOut"){
                     AuthManager.shared.logOut()

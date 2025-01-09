@@ -8,6 +8,7 @@
 import SwiftUI
 // Alex will TON
 struct OnBoarding_WelcomeToSyntando: View {
+    @State var rotation : Angle = .zero
     var body: some View {
         ZStack{
             Color.orange.ignoresSafeArea(.all)
@@ -22,6 +23,13 @@ struct OnBoarding_WelcomeToSyntando: View {
                     .frame(width: 100, height: 100)
                     .foregroundStyle(.white)
                     .padding(.bottom,40)
+                    .rotationEffect(rotation)
+                    .gesture(
+                        RotateGesture()
+                            .onChanged({ value in
+                                rotation = value.rotation
+                            })
+                    )
             }
         }
     }
