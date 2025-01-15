@@ -47,8 +47,8 @@ class AuthManager: ObservableObject{
             let result =  try await fireBaseAuthManager.createUser(withEmail: email, password: password)
             self.user = result.user
             
-            var localAppUser = AppUser(id: user?.uid ?? "",
-                                  email: user?.email ?? "",
+            var localAppUser = AppUser(id: result.user.uid,
+                                  email: result.user.email ?? "",
                                   firstName: "",
                                   lastName: "",
                                   birthday: "",
@@ -122,6 +122,18 @@ class AuthManager: ObservableObject{
             
             let result = try await fireBaseAuthManager.signIn(with: credentials)
             self.user = result.user
+            
+            var localAppUser = AppUser(id: result.user.uid,
+                                       email: result.user.email ?? "",
+                                  firstName: "",
+                                  lastName: "",
+                                  birthday: "",
+                                  number: "",
+                                  registerdOn: Date.now.ISO8601Format(),
+                                  type: "",
+                                  hasOnBoarded: false)
+            
+            repository.createUser(user: localAppUser)
             self.appUser = try await repository.loadUser(id: result.user.uid)
             setAuthStateLoggedIn()
             
