@@ -10,27 +10,57 @@ import Firebase
 import FirebaseAuth
 import GoogleSignIn
 import GoogleSignInSwift
+import SwiftUI
+
+
 @MainActor
 class AuthManager: ObservableObject{
     
     static let shared = AuthManager()
-    
+    var repository = FirestoreRepository()
+
     @Published var user: User?
+    @Published var appUser: AppUser?
     @Published var errorMessage: String?
-    
+    @Published var authState : AuthState = .notLoggedIn
     
     private var fireBaseAuthManager = Auth.auth()
     
     private init(){
         self.user = fireBaseAuthManager.currentUser
+        
+        if user != nil{
+            setAuthStateLoading()
+            Task {
+                self.appUser = try await repository.loadUser(id: user!.uid)
+                setAuthStateLoggedIn()
+            }
+        }
+        
     }
+   
     
-  
     
     func register(email: String,password: String) async{
         do{
+            setAuthStateLoading()
             let result =  try await fireBaseAuthManager.createUser(withEmail: email, password: password)
             self.user = result.user
+            
+            var localAppUser = AppUser(id: user?.uid ?? "",
+                                  email: user?.email ?? "",
+                                  firstName: "",
+                                  lastName: "",
+                                  birthday: "",
+                                  number: "",
+                                  registerdOn: Date.now.ISO8601Format(),
+                                  type: "",
+                                  hasOnBoarded: false)
+            
+            repository.createUser(user: localAppUser)
+            self.appUser = localAppUser
+            
+            setAuthStateLoggedIn()
         }catch{
             self.errorMessage = error.localizedDescription
         }
@@ -39,8 +69,11 @@ class AuthManager: ObservableObject{
     
     func login(email : String, password : String) async {
         do{
+            setAuthStateLoading()
             let result = try await fireBaseAuthManager.signIn(withEmail: email, password: password)
             self.user = result.user
+            self.appUser = try await repository.loadUser(id: result.user.uid)
+            setAuthStateLoggedIn()
         }catch{
             self.errorMessage = error.localizedDescription
         }
@@ -50,12 +83,18 @@ class AuthManager: ObservableObject{
         do{
             try fireBaseAuthManager.signOut()
             self.user = nil
+            self.appUser = nil
+            setAuthStateNotLoggedIn()
+
         }catch{
             errorMessage = error.localizedDescription
         }
     }
     
     func signInWithGoogle() async -> Bool{
+        
+        setAuthStateLoading()
+        
         guard let clientID = FirebaseApp.app()?.options.clientID else {
             fatalError("No Client ID found in Firebase Config")
         }
@@ -83,6 +122,9 @@ class AuthManager: ObservableObject{
             
             let result = try await fireBaseAuthManager.signIn(with: credentials)
             self.user = result.user
+            self.appUser = try await repository.loadUser(id: result.user.uid)
+            setAuthStateLoggedIn()
+            
             return true
         }
         catch{
@@ -92,5 +134,14 @@ class AuthManager: ObservableObject{
         
     }
     
+    func setAuthStateLoading(){
+        self.authState = .loading
+    }
+    func setAuthStateNotLoggedIn(){
+        self.authState = .notLoggedIn
+    }
+    func setAuthStateLoggedIn(){
+        self.authState = .loggedIn
+    }
     
 }

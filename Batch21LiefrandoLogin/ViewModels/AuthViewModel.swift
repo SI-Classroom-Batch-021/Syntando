@@ -23,6 +23,7 @@ class AuthViewModel : ObservableObject {
     @Published var missingPasswordCharacters : Int = 8
     @Published var specialCharCompliant : Bool = false
     
+    
     private var authManager : AuthManager
     
     init(authManager : AuthManager){

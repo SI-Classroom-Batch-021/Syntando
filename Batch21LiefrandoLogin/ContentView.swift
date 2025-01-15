@@ -7,21 +7,19 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
     @StateObject var authManager = AuthManager.shared
     @StateObject var authViewModel = AuthViewModel(authManager: AuthManager.shared)
     
     var body: some View {
         VStack {
-            if(authManager.user != nil){
-                OnBoardingView()
-            }else{
-                if(authViewModel.showRegister){
-                    RegisterView()
-                }else{
-                    LogInView()
-                }
+            switch authManager.authState {
+            case .loading: LoadingView()
+            case .loggedIn: HomeView()
+            case .notLoggedIn: LoginFlowView()
             }
+            
         }
         .environmentObject(authViewModel)
             

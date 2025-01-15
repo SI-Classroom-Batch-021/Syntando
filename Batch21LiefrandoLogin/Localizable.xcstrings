@@ -113,6 +113,9 @@
         }
       }
     },
+    "Hallo das hier wird die HauptView" : {
+
+    },
     "label.already_has_account" : {
       "localizations" : {
         "de" : {
@@ -372,6 +375,9 @@
           }
         }
       }
+    },
+    "Loading" : {
+
     },
     "textfield.email" : {
       "localizations" : {
