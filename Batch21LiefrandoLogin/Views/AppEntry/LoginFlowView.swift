@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginFlowView: View {
     @StateObject var authManager = AuthManager.shared
-    @StateObject var authViewModel = AuthViewModel(authManager: AuthManager.shared)
+    @EnvironmentObject var authViewModel: AuthViewModel
     var body: some View {
         if(authViewModel.showRegister){
             RegisterView()

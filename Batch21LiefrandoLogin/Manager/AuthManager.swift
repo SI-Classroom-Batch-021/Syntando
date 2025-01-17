@@ -28,7 +28,6 @@ class AuthManager: ObservableObject{
     
     private init(){
         self.user = fireBaseAuthManager.currentUser
-        
         if user != nil{
             setAuthStateLoading()
             Task {
@@ -54,7 +53,7 @@ class AuthManager: ObservableObject{
                                   birthday: "",
                                   number: "",
                                   registerdOn: Date.now.ISO8601Format(),
-                                  type: "",
+                                       type: .none,
                                   hasOnBoarded: false)
             
             repository.createUser(user: localAppUser)
@@ -106,6 +105,7 @@ class AuthManager: ObservableObject{
               let window = windowScene.windows.first, let rootViewController = window.rootViewController else {
             
             print("there is no root view controller")
+            setAuthStateNotLoggedIn()
             return false
         }
             
@@ -114,6 +114,7 @@ class AuthManager: ObservableObject{
             let user = userAuthentication.user
             guard let idToken = user.idToken else {
                 print("ID token missing")
+                setAuthStateNotLoggedIn()
                 return false
             }
             let accessToken = user.accessToken
@@ -130,7 +131,7 @@ class AuthManager: ObservableObject{
                                   birthday: "",
                                   number: "",
                                   registerdOn: Date.now.ISO8601Format(),
-                                  type: "",
+                                       type: .none,
                                   hasOnBoarded: false)
             
             repository.createUser(user: localAppUser)
@@ -141,6 +142,7 @@ class AuthManager: ObservableObject{
         }
         catch{
             print(error.localizedDescription)
+            setAuthStateNotLoggedIn()
             return false
         }
         

@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum UserType: String{
-    case customer, restaurant
+enum UserType: String, Codable{
+    case customer, restaurant,none
 }

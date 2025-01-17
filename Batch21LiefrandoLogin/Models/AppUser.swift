@@ -7,6 +7,8 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestore
+
 struct AppUser : Codable{
     var id : String
     var email : String
@@ -15,7 +17,8 @@ struct AppUser : Codable{
     var birthday : String
     var number : String
     var registerdOn: String
-    var type : String
+    var type : UserType
     var hasOnBoarded: Bool
     
+
 }

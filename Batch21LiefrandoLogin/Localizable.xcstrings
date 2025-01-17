@@ -34,6 +34,7 @@
       }
     },
     "button.logout" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -45,6 +46,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Logout"
+          }
+        }
+      }
+    },
+    "button.onBoarding_save" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Speichern!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save!"
           }
         }
       }
@@ -113,7 +130,13 @@
         }
       }
     },
-    "Hallo das hier wird die HauptView" : {
+    "confirmation" : {
+
+    },
+    "Data" : {
+
+    },
+    "Hallo %@ das hier wird die HauptView" : {
 
     },
     "label.already_has_account" : {
@@ -165,6 +188,7 @@
       }
     },
     "label.give_data" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -176,6 +200,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Give me your data!"
+          }
+        }
+      }
+    },
+    "label.loading_data" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wir laden nur schnell deine Daten."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Just Loading your Data."
           }
         }
       }
@@ -208,6 +248,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "We would like to send you notifications."
+          }
+        }
+      }
+    },
+    "label.onboarding_done" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Danke das wars, du kannst jetzt loslegen!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You are done, lets go!"
           }
         }
       }
@@ -328,6 +384,9 @@
         }
       }
     },
+    "label.start_onboarding" : {
+
+    },
     "label.syntando" : {
       "localizations" : {
         "de" : {
@@ -376,7 +435,51 @@
         }
       }
     },
-    "Loading" : {
+    "label.welcome_header" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wilkommen bei Syntando 🥳"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome to Syntando 🥳"
+          }
+        }
+      }
+    },
+    "label.welcome_subheader" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dein Portal zu köstlichen Speisen 🍕🍔"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your gateway to delicious meals 🍕🍔"
+          }
+        }
+      }
+    },
+    "Location" : {
+
+    },
+    "Logout" : {
+
+    },
+    "notification" : {
+
+    },
+    "Role" : {
+
+    },
+    "test" : {
 
     },
     "textfield.email" : {

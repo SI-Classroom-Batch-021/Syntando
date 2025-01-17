@@ -8,24 +8,19 @@
 import SwiftUI
 
 struct CustomerQuestionView: View {
-    @State var firstName: String = ""
-    @State var lastName: String = ""
-    @State var mobileNumber : String = ""
-    @State var email: String = ""
+    @EnvironmentObject var viewModel : OnBoardingViewModel
     var body: some View {
         VStack{
-            
             VStack(spacing: 16){
                 
-                AlexTextField(text: $firstName, placeholder: "Firstname",keyboardType: .default)
-               
-                AlexTextField(text: $lastName, placeholder: "Lastname",keyboardType: .default)
-                  
-                AlexTextField(text: $mobileNumber, placeholder: "Number", keyboardType: .numberPad)
-                
-                AlexTextField(text: $email, placeholder: "Email", keyboardType: .emailAddress)
-                
+                AlexTextField(text: $viewModel.firstName, placeholder: "Firstname",keyboardType: .default)
                     
+                AlexTextField(text: $viewModel.lastName, placeholder: "Lastname",keyboardType: .default)
+                    
+                AlexTextField(text: $viewModel.number, placeholder: "Number", keyboardType: .numberPad)
+                    
+                AlexTextField(text: $viewModel.email, placeholder: "Email", keyboardType: .emailAddress)
+                
             }
             .padding(16)
         }

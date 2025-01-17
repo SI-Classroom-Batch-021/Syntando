@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct DecisionView: View {
-    @Binding var isRestuarant : Bool
-    @Binding var isCustomer : Bool 
+    @EnvironmentObject var viewModel : OnBoardingViewModel
+    @State var isRestuarant : Bool = false
+    @State var isCustomer : Bool = false
     var body: some View {
         HStack{
             
@@ -29,6 +30,7 @@ struct DecisionView: View {
                 withAnimation {
                     isRestuarant = true
                     isCustomer = false
+                    viewModel.userType = .restaurant
                 }
             }
             
@@ -48,6 +50,7 @@ struct DecisionView: View {
                 withAnimation() {
                     isRestuarant = false
                     isCustomer = true
+                    viewModel.userType = .customer
                 }
             }
 
@@ -56,5 +59,5 @@ struct DecisionView: View {
 }
 
 #Preview {
-    DecisionView(isRestuarant: .constant(true), isCustomer: .constant(false))
+    DecisionView()
 }

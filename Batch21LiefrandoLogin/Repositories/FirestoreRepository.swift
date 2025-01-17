@@ -12,6 +12,7 @@ class FirestoreRepository{
     let db = Firestore.firestore()
     
     func createUser(user : AppUser){
+
         do{
             try db.collection(DocumentPath.user.rawValue).document(user.id).setData(from : user)
         }catch{
@@ -29,6 +30,14 @@ class FirestoreRepository{
             throw error
         }
         
+    }
+    
+    func updateUser(user : AppUser) throws{
+        do{
+            try db.collection(DocumentPath.user.rawValue).document(user.id).setData(from : user)
+        }catch{
+            print("ERROR UPDATING USER")
+        }
     }
     
     

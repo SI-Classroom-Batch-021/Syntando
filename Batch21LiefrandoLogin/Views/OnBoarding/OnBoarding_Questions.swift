@@ -15,10 +15,7 @@ struct OnBoarding_Questions: View {
             Color.orange
             //Auswhal ob Restaurant oder Besteller
             VStack{
-                DecisionView(
-                     isRestuarant: $isRestuarant,
-                    isCustomer: $isCustomer
-                )
+                DecisionView()
                 CustomerQuestionView()
             }
             

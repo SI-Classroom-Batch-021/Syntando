@@ -12,10 +12,30 @@ struct HomeView: View {
     @StateObject var authViewModel = AuthViewModel(authManager: AuthManager.shared)
     
     var body: some View {
-        if(authManager.appUser?.hasOnBoarded ?? false){
-            Text("Hallo das hier wird die HauptView")
-        }else {
-            OnBoardingView()
+        VStack{
+            if(authManager.appUser?.hasOnBoarded ?? false){
+                Text("Hallo \(authManager.appUser?.firstName ?? "XY") das hier wird die HauptView")
+                if(authManager.appUser?.type == .customer){
+                    Image(systemName: "person.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 75, height: 75)
+                        .foregroundStyle(.orange)
+                        .padding(.horizontal,8)
+                }else{
+                    Image(systemName: "fork.knife")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 75, height: 75)
+                        .foregroundStyle(.orange)
+                        .padding(.horizontal,8)
+                }
+                SyntandoButton(text: "Logout", active: true) {
+                    authManager.logOut()
+                }
+            }else {
+                OnBoardingView()
+            }
         }
     }
 }
